@@ -1,0 +1,106 @@
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 40px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.company-name {
+  display: flex;
+  flex-direction: column;
+}
+
+.girman {
+  font-weight: bold;
+  font-size: 24px;
+  margin: 0;
+}
+
+.technologies {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Navbar links styling */
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style-type: none;
+  margin: 0;
+}
+
+.nav-item {
+  text-transform: uppercase;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: black;
+  font-weight: normal;
+  padding: 5px 10px;
+  transition: all 0.3s;
+}
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+/* Specific styles for Search link */
+.search-link {
+  color: blue;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Hamburger menu */
+.hamburger {
+  display: none;
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .navbar {
+    justify-content: space-between;
+  }
+  .nav-links {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    width: 100px;
+    padding: 20px 15px 20px 5px;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    gap: 15px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  .nav-links.open {
+    display: flex; /* Show the dropdown menu when open */
+  }
+  .hamburger {
+    display: block;
+  }
+  /* Mobile-specific link styles */
+  .nav-link {
+    font-size: 18px;
+  }
+}

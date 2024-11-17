@@ -1,17 +1,24 @@
-import React from 'react'
-import Navbar from '../../components/navbar/Navbar'
-import SearchBar from '../../components/searchBar/SearchBar'
+import React from "react";
+import Navbar from "../../components/navbar/Navbar";
+import SearchBar from "../../components/searchBar/SearchBar";
+import "./Home.css";
 
 const Home = () => {
   return (
     <>
-    <Navbar />
-    <div className="mid-section">
-        G Technologies
-    </div>
-    <SearchBar />
+      <Navbar />
+      <div className="mid-section">
+        <div className="home-logo-container">
+          <img src="logo.svg" alt="Girman Technologies Logo" className="logo" />
+          <div className="company-name">
+            <h1 className="girman">Girman</h1>
+          </div>
+        </div>
+        <SearchBar />
+      </div>
+      
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
