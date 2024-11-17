@@ -1,8 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
+import SearchBar from "../searchBar/SearchBar";
 
-const Navbar = () => {
+const Navbar = ({ searchResultPage }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  // Handle resizing
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -18,35 +29,116 @@ const Navbar = () => {
         </div>
       </div>
 
-      <ul className={`nav-links ${isMenuOpen ? "open" : ""}`}>
-        <li className="nav-item">
-          <a href="#search" className="nav-link search-link">
-            Search
-          </a>
-        </li>
-        <li className="nav-item">
-          <a href="https://girmantech.com" className="nav-link">
-            Website
-          </a>
-        </li>
-        <li className="nav-item">
-          <a
-            href="https://www.linkedin.com/company/girmantech"
-            className="nav-link"
-          >
-            LinkedIn
-          </a>
-        </li>
-        <li className="nav-item">
-          <a href="mailto:contact@girmantech.com" className="nav-link">
-            Contact
-          </a>
-        </li>
-      </ul>
-
-      <button className="hamburger" onClick={toggleMenu}>
-        &#9776;
-      </button>
+      {/* Conditional rendering for SearchResults page */}
+      {searchResultPage ? (
+        <>
+          {!isMobile && <SearchBar />} {/* Show SearchBar only on desktop */}
+          {isMobile && (
+            <>
+              <button className="hamburger" onClick={toggleMenu}>
+                &#9776;
+              </button>
+              {isMenuOpen && (
+                <ul className={`nav-links-mobile ${isMenuOpen ? "open" : ""}`}>
+                  <li className="nav-item">
+                    <a href="#search" className="nav-link search-link">
+                      Search
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a href="https://girmantech.com" className="nav-link">
+                      Website
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      href="https://www.linkedin.com/company/girmantech"
+                      className="nav-link"
+                    >
+                      LinkedIn
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      href="mailto:contact@girmantech.com"
+                      className="nav-link"
+                    >
+                      Contact
+                    </a>
+                  </li>
+                </ul>
+              )}
+            </>
+          )}
+        </>
+      ) : (
+        <>
+          {!isMobile && (
+            <ul className={`nav-links ${isMenuOpen ? "open" : ""}`}>
+              <li className="nav-item">
+                <a href="#search" className="nav-link search-link">
+                  Search
+                </a>
+              </li>
+              <li className="nav-item">
+                <a href="https://girmantech.com" className="nav-link">
+                  Website
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  href="https://www.linkedin.com/company/girmantech"
+                  className="nav-link"
+                >
+                  LinkedIn
+                </a>
+              </li>
+              <li className="nav-item">
+                <a href="mailto:contact@girmantech.com" className="nav-link">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          )}
+          {isMobile && (
+            <>
+              <button className="hamburger" onClick={toggleMenu}>
+                &#9776;
+              </button>
+              {isMenuOpen && (
+                <ul className={`nav-links-mobile ${isMenuOpen ? "open" : ""}`}>
+                  <li className="nav-item">
+                    <a href="#search" className="nav-link search-link">
+                      Search
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a href="https://girmantech.com" className="nav-link">
+                      Website
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      href="https://www.linkedin.com/company/girmantech"
+                      className="nav-link"
+                    >
+                      LinkedIn
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      href="mailto:contact@girmantech.com"
+                      className="nav-link"
+                    >
+                      Contact
+                    </a>
+                  </li>
+                </ul>
+              )}
+            </>
+          )}
+        </>
+      )}
     </nav>
   );
 };

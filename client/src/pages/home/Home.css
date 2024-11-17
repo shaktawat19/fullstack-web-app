@@ -1,14 +1,21 @@
+.home-container {
+  height: 100vh;
+  background: linear-gradient(to bottom, white, rgba(135, 206, 235, 0.7)),
+    url("/bgImage.png") no-repeat center center/cover;
+ /* position: relative; */
+}
 .mid-section {
-  width: 100%;
+  position: absolute;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  width: 60vw;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 20px;
   align-items: center;
-  position: relative;
-  min-height: 90vh;
-  background: linear-gradient(to bottom, white, rgba(135, 206, 235, 0.7)),
-    url("/bgImage.png") no-repeat center center/cover;
 }
 
 .home-logo-container {
@@ -28,50 +35,49 @@
   margin: 0;
 }
 
-
 /* Media Queries */
 @media (max-width: 1024px) {
-    .home-logo-container {
-      margin-top: -150px; /* Adjust the top margin for smaller screens */
-    }
-  
-    .home-logo-container .logo {
-      width: 80px; /* Slightly reduce logo size */
-    }
-  
-    .home-logo-container .girman {
-      font-size: 80px; /* Reduce font size */
-    }
+  .home-logo-container {
+    margin-top: -150px; /* Adjust the top margin for smaller screens */
   }
-  
-  @media (max-width: 768px) {
-    .home-logo-container {
-      margin-top: -100px; /* Further adjust the top margin */
-    }
-  
-    .home-logo-container .logo {
-      width: 70px; /* Further reduce logo size */
-      margin-right: 0; /* Remove right margin as items are stacked */
-      margin-bottom: 10px; /* Add bottom margin for spacing */
-    }
-  
-    .home-logo-container .girman {
-        margin-left: 10px;
-      font-size: 60px; /* Further reduce font size */
-    }
+
+  .home-logo-container .logo {
+    width: 80px; /* Slightly reduce logo size */
   }
-  
-  @media (max-width: 480px) {
-    .home-logo-container {
-      margin-top: -50px; /* Adjust margin for mobile */
-    }
-  
-    .home-logo-container .logo {
-      width: 60px; /* Smaller logo size for mobile */
-    }
-  
-    .home-logo-container .girman {
-        margin-left: 10px;
-      font-size: 50px; /* Smaller font size for mobile */
-    }
+
+  .home-logo-container .girman {
+    font-size: 80px; /* Reduce font size */
   }
+}
+
+@media (max-width: 768px) {
+  .home-logo-container {
+    margin-top: -100px; /* Further adjust the top margin */
+  }
+
+  .home-logo-container .logo {
+    width: 70px; /* Further reduce logo size */
+    margin-right: 0; /* Remove right margin as items are stacked */
+    margin-bottom: 10px; /* Add bottom margin for spacing */
+  }
+
+  .home-logo-container .girman {
+    margin-left: 10px;
+    font-size: 60px; /* Further reduce font size */
+  }
+}
+
+@media (max-width: 480px) {
+  .home-logo-container {
+    margin-top: -50px; /* Adjust margin for mobile */
+  }
+
+  .home-logo-container .logo {
+    width: 60px; /* Smaller logo size for mobile */
+  }
+
+  .home-logo-container .girman {
+    margin-left: 10px;
+    font-size: 50px; /* Smaller font size for mobile */
+  }
+}

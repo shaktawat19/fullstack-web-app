@@ -36,9 +36,9 @@
 }
 
 /* Navbar links styling */
-.nav-links {
+.nav-links, .nav-links-mobile {
   display: flex;
-  gap: 20px;
+  gap: 10px;
   list-style-type: none;
   margin: 0;
 }
@@ -79,7 +79,7 @@
   .navbar {
     justify-content: space-between;
   }
-  .nav-links {
+  .nav-links, .nav-links-mobile {
     position: absolute;
     top: 50px;
     right: 20px;
@@ -94,14 +94,18 @@
     background-color: #fff;
     z-index: 100;
   }
-  .nav-links.open {
+
+  .nav-links.open, .nav-links-mobile.open {
     display: flex; /* Show the dropdown menu when open */
   }
   .hamburger {
     display: block;
+    z-index : 200 ; 
   }
+
   /* Mobile-specific link styles */
   .nav-link {
     font-size: 18px;
   }
+
 }

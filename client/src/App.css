@@ -4,3 +4,9 @@ body {
   padding: 0;
   height: 100%;
 }
+
+/* Apply box-sizing globally to all elements */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+

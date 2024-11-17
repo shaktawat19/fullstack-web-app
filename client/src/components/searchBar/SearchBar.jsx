@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SearchBar.css";
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
@@ -19,7 +19,10 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="search-bar-container">
+    <div
+      className="search-bar-container"
+      style={props?.isSearchBar ? { margin: "1.2rem auto" } : {}}
+    >
       <input
         type="text"
         placeholder="Search"
