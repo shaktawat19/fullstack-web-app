@@ -114,12 +114,16 @@ const SearchResults = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+  
+  console.log(backendUrl);
+  
   useEffect(() => {
     if (searchTerm) {
       fetchSearchResults(searchTerm);
     }
   }, [searchTerm]);
+  
 
   useEffect(() => {
     const handleResize = () => {
@@ -135,6 +139,7 @@ const SearchResults = () => {
     setError("");
     try {
       const response = await axios.get(
+        // fetch(`${backendUrl}/api/endpoint`)
         `http://localhost:8000/api/search/?q=${term}`
       );
       setFilteredUsers(response?.data?.data);
