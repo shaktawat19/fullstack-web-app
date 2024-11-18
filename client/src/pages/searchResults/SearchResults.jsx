@@ -107,20 +107,17 @@ const data = [
 const SearchResults = () => {
   const [filteredUsers, setFilteredUsers] = useState(data || []);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
   const location = useLocation(); // Get the current location (URL)
   const queryParams = new URLSearchParams(location.search);
   const searchTerm = queryParams.get("q"); // Get the search query parameter
   const [showModal, setShowModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
-  
-  console.log(backendUrl);
+  // const backendUrl = process.env.REACT_APP_BACKEND_URL;
   
   useEffect(() => {
     if (searchTerm) {
-      fetchSearchResults(searchTerm);
+      // fetchSearchResults(searchTerm);
     }
   }, [searchTerm]);
   
@@ -144,8 +141,7 @@ const SearchResults = () => {
       );
       setFilteredUsers(response?.data?.data);
     } catch (err) {
-      setError("No results found or error occurred.");
-      setFilteredUsers([]);
+      setFilteredUsers([]); 
     } finally {
       setLoading(false);
     }
@@ -168,7 +164,7 @@ const SearchResults = () => {
 
       <div className={`search-results ${showModal ? "blur-background" : ""}`}>
         {loading && <p>Loading...</p>}
-        {error && <p>{error}</p>}
+        {/* {error && <p>{error}</p>} */}
         {filteredUsers.length === 0 && !loading ? (
           <div className="empty-state">
             <img src="errorImg.png" alt="No Results" />
