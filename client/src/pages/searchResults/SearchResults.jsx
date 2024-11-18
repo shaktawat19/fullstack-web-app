@@ -137,7 +137,7 @@ const SearchResults = () => {
       const response = await axios.get(
         `http://localhost:8000/api/search/?q=${term}`
       );
-      setFilteredUsers(response.data);
+      setFilteredUsers(response?.data?.data);
     } catch (err) {
       setError("No results found or error occurred.");
       setFilteredUsers([]);
