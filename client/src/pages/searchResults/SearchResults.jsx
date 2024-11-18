@@ -105,7 +105,7 @@ const data = [
 ];
 
 const SearchResults = () => {
-  const [filteredUsers, setFilteredUsers] = useState(data || []);
+  const [filteredUsers, setFilteredUsers] = useState(data);
   const [loading, setLoading] = useState(false);
   const location = useLocation(); // Get the current location (URL)
   const queryParams = new URLSearchParams(location.search);
@@ -115,9 +115,18 @@ const SearchResults = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   // const backendUrl = process.env.REACT_APP_BACKEND_URL;
   
+  function filterUsersByName(q) {
+    return filteredUsers.filter(user => 
+      user.first_name.toLowerCase().includes(q.toLowerCase()) || 
+      user.last_name.toLowerCase().includes(q.toLowerCase())
+    );
+  }
+
   useEffect(() => {
     if (searchTerm) {
       // fetchSearchResults(searchTerm);
+     const users = filterUsersByName(searchTerm); // Temporary to test the UI
+     setFilteredUsers(users);
     }
   }, [searchTerm]);
   
@@ -164,14 +173,13 @@ const SearchResults = () => {
 
       <div className={`search-results ${showModal ? "blur-background" : ""}`}>
         {loading && <p>Loading...</p>}
-        {/* {error && <p>{error}</p>} */}
         {filteredUsers.length === 0 && !loading ? (
           <div className="empty-state">
             <img src="errorImg.png" alt="No Results" />
            <p>No results found</p></div>
         ) : (
           <div className="card-container">
-            {filteredUsers.map((user, idx) => (
+            {filteredUsers?.map((user, idx) => (
               <div key={idx} className="user-card">
                 <div className="card-top">
                   <img src={"ellipseImg.png"} alt={`${user.first_name}`} />
